@@ -77,6 +77,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/toshiba/folio100/kernel
 
+# Override cyanogen squisher to customize our update zip package
+TARGET_CUSTOM_RELEASETOOL := ./device/toshiba/folio100/releasetools/squisher
+
 BOARD_DATA_DEVICE := /dev/block/mmcblk0p6
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_CACHE_DEVICE := /dev/block/mmcblk0p2
