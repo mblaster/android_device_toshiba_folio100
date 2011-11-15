@@ -37,7 +37,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/toshiba/folio100/device.mk)
 
-PRODUCT_NAME := cyanogen_folio100
+PRODUCT_NAME := full_folio100
 PRODUCT_BRAND := toshiba
 PRODUCT_DEVICE := folio100
 PRODUCT_MODEL := Folio 100
