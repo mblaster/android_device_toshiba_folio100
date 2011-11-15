@@ -54,26 +54,14 @@ else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_COPY_FILES := \
-	$(LOCAL_KERNEL):kernel \
-	device/ti/panda/init.omap4pandaboard.rc:root/init.omap4pandaboard.rc \
-	device/ti/panda/init.omap4pandaboard.usb.rc:root/init.omap4pandaboard.usb.rc \
-	device/ti/panda/ueventd.omap4pandaboard.rc:root/ueventd.omap4pandaboard.rc \
-	device/ti/panda/media_profiles.xml:system/etc/media_profiles.xml \
-	frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
-
 PRODUCT_PACKAGES := \
-        make_ext4fs \
-	com.android.future.usb.accessory
+        make_ext4fs
 
 #PRODUCT_PROPERTY_OVERRIDES := \
 #	hwui.render_dirty_regions=false
 
 PRODUCT_CHARACTERISTICS := tablet
 
-#DEVICE_PACKAGE_OVERLAYS := \
-#    device/ti/panda/overlay
 #DEVICE_PACKAGE_OVERLAYS += device/toshiba/folio100/overlay
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -103,8 +91,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	make_ext4fs
 
-#$(call inherit-product-if-exists, vendor/ti/panda/device-vendor.mk)
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
-#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
-#$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 $(call inherit-product-if-exists, vendor/toshiba/folio100/folio100-vendor.mk)
