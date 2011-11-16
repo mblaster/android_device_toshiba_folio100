@@ -61,7 +61,7 @@ TARGET_OTA_ASSERT_DEVICE := folio100,betelgeuse
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_NO_RGBX_8888 := true
 BOARD_EGL_CFG := device/toshiba/folio100/egl.cfg
-USE_OPENGL_RENDERER := true
+#USE_OPENGL_RENDERER := true
 
 # Enables Old Sensor Compatibility Seems To Cause CPU Lockup, New kernel may be required
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
