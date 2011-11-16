@@ -123,9 +123,9 @@ PRODUCT_COPY_FILES += \\
 
 # EGL files for __DEVICE__
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libEGL_tegra.so:system/lib/egl/libEGL_tegra.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv1_CM_tegra.so:system/lib/egl/libGLESv1_CM_tegra.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv2_tegra.so:system/lib/egl/libGLESv2_tegra.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/libEGL_tegra.so:system/vendor/lib/egl/libEGL_tegra.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv1_CM_tegra.so:system/vendor/lib/egl/libGLESv1_CM_tegra.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv2_tegra.so:system/vendor/lib/egl/libGLESv2_tegra.so
 
 # Permission files for __DEVICE__
 PRODUCT_COPY_FILES += \\

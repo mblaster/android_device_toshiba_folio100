@@ -59,15 +59,13 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
-PRODUCT_PACKAGES += \
-        make_ext4fs
-
 #PRODUCT_PROPERTY_OVERRIDES := \
 #	hwui.render_dirty_regions=false
 
 PRODUCT_CHARACTERISTICS := tablet
 
-#DEVICE_PACKAGE_OVERLAYS += device/toshiba/folio100/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    device/toshiba/folio100/overlay
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
