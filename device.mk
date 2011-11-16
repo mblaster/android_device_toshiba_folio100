@@ -14,7 +14,12 @@
 # limitations under the License.
 #
 
-######
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/toshiba/folio100/kernel
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 # Get a proper init file
 PRODUCT_COPY_FILES += \
     device/toshiba/folio100/init.folio100.rc:root/init.folio100.rc \
@@ -43,23 +48,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin:/system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin \
     $(LOCAL_PATH)/wifi/ath6k/AR6003/hw2.0/bdata.WB31.bin:/system/wifi/ath6k/AR6003/hw2.0/bdata.WB31.bin \
     $(LOCAL_PATH)/wifi/libhuawei-ril.so:/system/lib/libhuawei-ril.so \
-    $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-    $(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
-    $(LOCAL_PATH)/ramdisk/initlogo.rle:root/initlogo.rle
-######
+    $(LOCAL_PATH)/ramdisk/default.prop:root/default.prop
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/toshiba/folio100/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+#$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
+#$(LOCAL_PATH)/ramdisk/initlogo.rle:root/initlogo.rle
 
-PRODUCT_COPY_FILES := \
+
+PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel \
 	frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
         make_ext4fs
 
 #PRODUCT_PROPERTY_OVERRIDES := \
@@ -82,8 +82,7 @@ PRODUCT_PACKAGES += \
     screencap \
     abtfilt \
     wmiconfig \
-    hostap \
-    com.android.future.usb.accessory
+    hostap
 
 # Use MDPI artwork
 PRODUCT_LOCALES += mdpi
