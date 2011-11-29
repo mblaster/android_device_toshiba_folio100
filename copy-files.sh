@@ -6,6 +6,9 @@
 # The Source location passed should contain the /system/ folder
 # for the specific device
 
+VENDOR=toshiba
+DEVICE=folio100
+
 if [ $# -lt 1 ]
 then
         echo "Usage:" $0 "<Source>"
@@ -14,17 +17,15 @@ fi
 
 SOURCE=${1//'/'/'\/'}
 
-echo "Creating copy script from extract-files.sh..."
-sed s/"adb pull "/"cp -a $SOURCE"/g <extract-files.sh >copy-files_TEMP.sh
+BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+rm -rf $BASE/*
 
-echo "Making script executable..."
-chmod 755 copy-files_TEMP.sh
+for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
+    DIR=`dirname $FILE`
+    if [ ! -d $BASE/$DIR ]; then
+        mkdir -p $BASE/$DIR
+    fi
+    cp -a $SOURCE/$FILE /system/$FILE $BASE/$FILE
+done
 
-echo "Executing script..."
-./copy-files_TEMP.sh
-
-echo "Removing script..."
-rm -f copy-files_TEMP.sh
-
-echo "Done."
-echo ""
+./setup-makefiles.sh
