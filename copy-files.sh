@@ -15,7 +15,7 @@ then
         exit
 fi
 
-SOURCE=${1//'/'/'\/'}
+SOURCE="$1/system"
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
@@ -25,7 +25,7 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    cp -a $SOURCE/$FILE /system/$FILE $BASE/$FILE
+    cp -a $SOURCE/$FILE $BASE/$FILE
 done
 
 ./setup-makefiles.sh
